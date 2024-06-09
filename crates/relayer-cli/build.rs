@@ -19,7 +19,7 @@ fn version() -> String {
     if !is_ci_release() {
         if let Some(git) = GitHandle::new() {
             println!("cargo:rustc-rerun-if-changed=.git/HEAD");
-            vers.push('+');
+            vers.push_str("-alphab+");
             vers.push_str(&git.last_commit_hash());
             if git.is_dirty() {
                 vers.push_str("-dirty");
